@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const path = require('path');
 
+app.use(express.urlencoded({ extended: true }));
+
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -13,6 +15,7 @@ app.use(function (req, res, next) {
   next();
 });
 
+// 
 app.post("/get-products", (req, res) => {
   console.log(`req`, req.params)
   res.json({ items: [] });
